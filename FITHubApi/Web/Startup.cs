@@ -12,6 +12,7 @@ using Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Core.Context;
 
 namespace Web
 {
@@ -34,6 +35,10 @@ namespace Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            string dbConnection = Configuration.GetConnectionString("SqlServer");
+            services.AddDbContext<FITHubContext>(
+                options => options.UseSqlServer(dbConnection), ServiceLifetime.Scoped);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
