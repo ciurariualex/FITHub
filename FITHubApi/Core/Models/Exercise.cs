@@ -8,6 +8,5 @@
         public string Name { get; set; }
         public int Reps { get; set; }
         public DateTime Duration { get; set; }
-
     }
 }

@@ -7,6 +7,6 @@
     public class Gym : BaseEntity<Guid>
     {
         public string Name { get; set; }
-        public Location Location { get; set; }
+        public Address Address { get; set; }
     }
 }
