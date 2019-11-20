@@ -8,7 +8,7 @@
     {
         public void Configure(EntityTypeBuilder<WorkoutExercise> builder)
         {
-            builder.ToTable("WorkoutExercise");
+            builder.ToTable("WorkoutExercises");
 
             builder.HasOne(workoutExercise => workoutExercise.Workout);
 

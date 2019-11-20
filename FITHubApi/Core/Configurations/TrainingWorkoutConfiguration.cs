@@ -8,13 +8,13 @@
     {
         public void Configure(EntityTypeBuilder<TrainingWorkout> builder)
         {
-            builder.ToTable("TrainingWorkout");
+            builder.ToTable("TrainingWorkouts");
 
+            builder.HasKey(trainingWorkout => new { trainingWorkout.TrainingId, trainingWorkout.WorkoutId });
+           
             builder.HasOne(trainingWorkout => trainingWorkout.Training);
 
             builder.HasOne(trainingWorkout => trainingWorkout.Workout);
-
-            builder.HasKey(trainingWorkout => new { trainingWorkout.TrainingId, trainingWorkout.WorkoutId });
 
             builder.Property(trainingWorkout => trainingWorkout.TrainingId)
                 .IsRequired();

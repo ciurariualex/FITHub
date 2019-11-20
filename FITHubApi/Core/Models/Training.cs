@@ -8,6 +8,5 @@
     {
         public string Name { get; set; }
         public TrainingType Type { get; set; }
-        public virtual TrainingWorkout TrainingWorkout { get; set; } = new TrainingWorkout();
     }
 }
