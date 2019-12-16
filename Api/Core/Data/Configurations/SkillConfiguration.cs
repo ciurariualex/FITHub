@@ -1,0 +1,44 @@
+﻿using Core.Data.Entities;
+using Core.Data.Enums;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using System;
+
+namespace Core.Data.Configurations
+{
+    internal sealed class SkillConfiguration : IEntityTypeConfiguration<Skill>
+    {
+        public void Configure(EntityTypeBuilder<Skill> builder)
+        {
+            builder.ToTable("Skills");
+
+            builder.HasQueryFilter(skill => !skill.IsDeleted);
+
+            builder.HasKey(skill => skill.Id)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            builder.Property(skill => skill.Name)
+                .IsRequired();
+
+            builder.Property(skill => skill.Experience)
+                .HasDefaultValue(new DateTime(0, 0, 0))
+                .IsRequired();
+
+            builder.Property(skill => skill.Level)
+                .HasDefaultValue(SkillLevel.Beginner)
+                .IsRequired();
+
+            builder.Property(skill => skill.CreatedAt)
+                .IsRequired();
+
+            builder.Property(skill => skill.CreatedBy)
+                .IsRequired();
+
+            builder.Property(skill => skill.IsDeleted)
+                .HasDefaultValue(false)
+                .IsRequired();
+        }
+    }
+}
+

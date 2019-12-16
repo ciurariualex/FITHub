@@ -23,11 +23,19 @@ namespace Core.Context
         public DbSet<Workout> Workouts { get; set; }
         public DbSet<WorkoutExercise> WorkoutExercises { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
             builder.ApplyConfiguration(new ApplicationUserConfiguration());
+            builder.ApplyConfiguration(new DietConfiguration());
+            builder.ApplyConfiguration(new ExerciseConfiguration());
+            builder.ApplyConfiguration(new GymConfiguration());
+            builder.ApplyConfiguration(new PackageConfiguration());
+            builder.ApplyConfiguration(new ProfileConfiguration());
+            builder.ApplyConfiguration(new SkillConfiguration());
+            builder.ApplyConfiguration(new TrainingConfiguration());
+            builder.ApplyConfiguration(new TrainingWorkoutConfiguration());
+            builder.ApplyConfiguration(new WorkoutExerciseConfiguration());
         }
     }
 }
